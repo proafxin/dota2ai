@@ -1,7 +1,7 @@
-python-template
-===============
+dota2ai
+=======
 
 .. toctree::
    :maxdepth: 4
 
-   template
+   dota2ai

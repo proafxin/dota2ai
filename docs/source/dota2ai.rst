@@ -1,13 +1,13 @@
-template package
-================
+dota2ai package
+===============
 
 Submodules
 ----------
 
-template.hello module
----------------------
+dota2ai.hello module
+--------------------
 
-.. automodule:: template.hello
+.. automodule:: dota2ai.hello
    :members:
    :undoc-members:
    :show-inheritance:
@@ -15,7 +15,7 @@ template.hello module
 Module contents
 ---------------
 
-.. automodule:: template
+.. automodule:: dota2ai
    :members:
    :undoc-members:
    :show-inheritance:

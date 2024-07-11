@@ -1,6 +1,6 @@
 import pytest
 
-from template.hello import hello
+from dota2ai.hello import hello
 
 
 @pytest.mark.asyncio

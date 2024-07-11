@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "template"
+name = "dota2ai"
 version = "1.0.0"
-description = "A python template with code formatting, typing, test coverage and automated tasks."
+description = "AI tools for Dota 2."
 authors = ["Masum Billal <billalmasum93@gmail.com>"]
 license = "LICENSE"
 readme = "README.md"
