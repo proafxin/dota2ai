@@ -28,7 +28,6 @@ jobs:
           python -m pip install -U tox
       - name: Tox
         run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
           tox
       - if: ${{ github.event_name == 'push' && matrix.python-version == 3.12 }}
         name: Upload coverage reports to Codecov
