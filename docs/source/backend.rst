@@ -1,4 +1,4 @@
-dota2ai package
+backend package
 ===============
 
 Subpackages
@@ -7,12 +7,15 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   dota2ai.collector
+   backend.db
+   backend.responses
+   backend.routers
+   backend.services
 
 Module contents
 ---------------
 
-.. automodule:: dota2ai
+.. automodule:: backend
    :members:
    :undoc-members:
    :show-inheritance:

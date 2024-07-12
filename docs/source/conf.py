@@ -19,11 +19,11 @@ toml_file = join(root, "pyproject.toml")
 
 with open(toml_file, "rb") as f:
     data = tomllib.load(f)
-    tool = data.get("tool")
+    tool = data.get("project")
     if not isinstance(tool, dict):
         raise ValueError("Check your pyproject.toml file")
 
-    version = tool["poetry"]["version"]
+    version = tool["version"]
 
 
 release = version

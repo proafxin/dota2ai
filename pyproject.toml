@@ -1,32 +1,32 @@
-[tool.poetry]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
 name = "dota2ai"
 version = "1.0.0"
+requires-python = ">=3.11"
+authors = [
+  {name = "Masum Billal", email = "billalmasum93@gmail.com"},
+]
+maintainers = [
+  {name = "Masum Billal", email = "billalmasum93@gmail.com"},
+]
 description = "AI tools for Dota 2."
-authors = ["Masum Billal <billalmasum93@gmail.com>"]
-license = "LICENSE"
 readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["python", "ocr", "opencv", "yolo", "Dota 2", "pytorch"]
+classifiers = [
+  "Programming Language :: Python"
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.2.2"
-coverage = "^7.5.4"
-pytest-asyncio = "^0.23.7"
+[project.optional-dependencies]
 
 
-[tool.poetry.group.docs.dependencies]
-sphinx = "^7.3.7"
-furo = "^2024.5.6"
-
-
-[tool.poetry.group.typing.dependencies]
-mypy = "^1.10.1"
-
-
-[tool.poetry.group.formatting.dependencies]
-pre-commit = "^3.7.1"
+[project.urls]
+Documentation = "https://dota2ai.readthedocs.io/en/latest/?badge=latest"
+Repository = "https://github.com/proafxin/dota2ai"
+"Bug Tracker" = "https://github.com/proafxin/dota2ai/issues"
 
 
 [tool.mypy]
@@ -39,7 +39,3 @@ exclude_dirs = [".venv", "venv", "env", ".tox", "docs", "tests"]
 
 [tool.ruff]
 line-length = 100
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
