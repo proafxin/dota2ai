@@ -27,4 +27,4 @@ api.startup_handler(handler=startup_handler)
 api.shutdown_handler(handler=shutdown_handler)
 
 if __name__ == "__main__":
-    api.start(port=8000, host="0.0.0.0")
+    api.start(port=8000)
