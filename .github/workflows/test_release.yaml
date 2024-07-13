@@ -28,19 +28,12 @@ jobs:
           python -m pip install -U tox
       - name: Tox
         run: |
-          curl -sSL https://install.python-poetry.org | python3 -
           tox
-      - if: ${{ github.event_name == 'push' && matrix.python-version == 3.12 }}
+          tox -e coverage
+      - if: ${{ matrix.python-version == 3.12 }}
         name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          slug: proafxin/python-template
+          slug: proafxin/dota2ai
           verbose: true
-      - if: ${{ github.event_name == 'push' && matrix.python-version == 3.8 }}
-        name: Publish to Pypi
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
-          poetry build
-          poetry publish
