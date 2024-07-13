@@ -8,6 +8,7 @@
 
 import sys
 import tomllib
+from datetime import datetime
 from os.path import abspath, dirname, join
 
 cwd = dirname(abspath(__file__))
@@ -15,22 +16,27 @@ root = join(cwd, "../..")
 
 sys.path.insert(0, root)
 
+
 toml_file = join(root, "pyproject.toml")
 
 with open(toml_file, "rb") as f:
     data = tomllib.load(f)
-    tool = data.get("project")
-    if not isinstance(tool, dict):
+    project_data = data.get("project")
+    if not isinstance(project_data, dict):
         raise ValueError("Check your pyproject.toml file")
 
-    version = tool["version"]
+    authors: list[dict[str, str]] = project_data["authors"]
+    author_names = [author["name"] for author in authors]
+    project: str = project_data["name"].upper()
 
 
-release = version
+VERSION = "1.1.0"
+release = VERSION
 
-project = "Python Template"
-copyright = "2023, Masum Billal"
-author = "Masum Billal"
+
+author = ", ".join(author_names)
+year = datetime.now().year
+copyright = f"{year}, {author}"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

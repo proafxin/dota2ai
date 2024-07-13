@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
+dynamic = ["version"]
 name = "dota2ai"
-version = "1.0.0"
 requires-python = ">=3.11"
 authors = [
   {name = "Masum Billal", email = "billalmasum93@gmail.com"},
@@ -17,11 +17,14 @@ readme = "README.md"
 license = {file = "LICENSE"}
 keywords = ["python", "ocr", "opencv", "yolo", "Dota 2", "pytorch"]
 classifiers = [
-  "Programming Language :: Python"
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
 ]
 
-[project.optional-dependencies]
 
+[tool.hatch.version]
+path = "docs/source/conf.py"
 
 [project.urls]
 Documentation = "https://dota2ai.readthedocs.io/en/latest/?badge=latest"
