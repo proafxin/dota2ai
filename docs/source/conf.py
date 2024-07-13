@@ -16,6 +16,7 @@ root = join(cwd, "../..")
 
 sys.path.insert(0, root)
 
+from dota2ai.about import VERSION  # noqa: E402
 
 toml_file = join(root, "pyproject.toml")
 
@@ -30,7 +31,6 @@ with open(toml_file, "rb") as f:
     project: str = project_data["name"].upper()
 
 
-VERSION = "1.1.0"
 release = VERSION
 
 

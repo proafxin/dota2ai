@@ -1,11 +1,11 @@
 from enum import Enum
 
-from backend.responses.base import Base
+from backend.responses.base import Base, BaseResponse
 
 
 class AttackType(str, Enum):
-    MELEE = "melee"
-    RANGED = "ranged"
+    MELEE = "Melee"
+    RANGED = "Ranged"
 
 
 class PrimaryAttribute(str, Enum):
@@ -34,3 +34,7 @@ class Hero(Base):
     attack_type: AttackType
     roles: list[Role]
     legs: int
+
+
+class HeroResponse(BaseResponse, Hero):
+    pass

@@ -24,7 +24,7 @@ classifiers = [
 
 
 [tool.hatch.version]
-path = "docs/source/conf.py"
+path = "dota2ai/about.py"
 
 [project.urls]
 Documentation = "https://dota2ai.readthedocs.io/en/latest/?badge=latest"
@@ -34,6 +34,10 @@ Repository = "https://github.com/proafxin/dota2ai"
 
 [tool.mypy]
 exclude = [".venv", ".env", "venv", "build", "docs", "dist"]
+
+[[tool.mypy.overrides]]
+module = "openapidocs.*"
+ignore_missing_imports = true
 
 
 [tool.bandit]

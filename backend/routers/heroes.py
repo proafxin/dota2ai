@@ -1,11 +1,22 @@
-from typing import Any
+from blacksheep import Request, get, post
+from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 
-from robyn import Request, SubRouter
-
-router: SubRouter = SubRouter(file_object=__name__, prefix="/heroes")
+from backend.responses.heroes import HeroResponse
 
 
-@router.get(endpoint="/populate")  # type: ignore
-async def populate(request: Request, global_dependencies: dict[str, Any]) -> str:
-    print(global_dependencies["mongo_client"])
+@get("/")
+async def index() -> str:
     return "Hello world"
+
+
+@post("/populate/details")
+async def populate_details(
+    request: Request, client: AsyncIOMotorClient, db: AsyncIOMotorDatabase
+) -> list[HeroResponse]:
+    print(client)
+    print(client.list_database_names())
+    print(type(client))
+    print(db)
+    print(type(db))
+    print(db.name)
+    return []

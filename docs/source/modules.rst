@@ -5,4 +5,5 @@ dota2ai
    :maxdepth: 4
 
    backend
+   docs
    dota2ai

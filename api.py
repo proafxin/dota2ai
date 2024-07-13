@@ -1,30 +1,20 @@
-from robyn import Robyn
+from blacksheep import Application
+from rodi import Container
 
-from backend.db.connect import client
-from backend.routers.heroes import router as heroes_router
-
-api = Robyn(__file__)
-
-
-def inject_dependencies(api: Robyn) -> None:
-    api.inject_global(mongo_client=client)  # type: ignore
+from backend.auth import configure_authentication
+from backend.dependencies import configure_dependencies
+from backend.errors import configure_error_handlers
+from docs import configure_docs
 
 
-def include_routers(api: Robyn) -> None:
-    api.include_router(router=heroes_router)  # type: ignore
+def configure_application(services: Container) -> Application:
+    api = Application(services=services, show_error_details=True)
+
+    configure_error_handlers(api)
+    configure_authentication(api=api)
+    configure_docs(api=api)
+
+    return api
 
 
-async def startup_handler() -> None:
-    inject_dependencies(api=api)
-    include_routers(api=api)
-
-
-async def shutdown_handler() -> None:
-    client.close()
-
-
-api.startup_handler(handler=startup_handler)
-api.shutdown_handler(handler=shutdown_handler)
-
-if __name__ == "__main__":
-    api.start(port=8000)
+api = configure_application(services=configure_dependencies())
