@@ -30,7 +30,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - uses: adambirds/docker-compose-action@main
         with:
-          compose-file: compose.yml
+          compose-file: compose.yaml
       - name: Install dependencies
         run: |
           python -m pip install -U pip
