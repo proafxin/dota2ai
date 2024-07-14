@@ -1,15 +1,9 @@
-from blacksheep import Request, get, post
+from blacksheep import Request
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 
 from backend.responses.heroes import HeroResponse
 
 
-@get("/")
-async def index() -> str:
-    return "Hello world"
-
-
-@post("/populate/details")
 async def populate_details(
     request: Request, client: AsyncIOMotorClient, db: AsyncIOMotorDatabase
 ) -> list[HeroResponse]:
