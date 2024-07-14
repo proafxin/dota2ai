@@ -1,6 +1,6 @@
 from enum import Enum
 
-from backend.responses.base import Base, BaseResponse
+from api.responses.base import Base, BaseResponse
 
 
 class AttackType(str, Enum):

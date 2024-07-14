@@ -7,8 +7,6 @@ alabaster==0.7.16
     # via sphinx
 annotated-types==0.7.0
     # via pydantic
-anyio==4.4.0
-    # via httpx
 arrow==1.3.0
     # via cookiecutter
 attrs==23.2.0

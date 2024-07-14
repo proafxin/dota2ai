@@ -3,8 +3,8 @@ from datetime import datetime, timezone
 from aiohttp import ClientSession
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
-from backend.requests import get
-from backend.responses.heroes import Hero, HeroResponse
+from api.requests import get
+from api.responses.heroes import Hero, HeroResponse
 
 
 async def get_details() -> list[Hero]:
@@ -14,7 +14,7 @@ async def get_details() -> list[Hero]:
         return [Hero(**data) for data in response[0]]
 
 
-async def populate_details(db: AsyncIOMotorDatabase) -> list[HeroResponse]:
+async def populate(db: AsyncIOMotorDatabase) -> list[HeroResponse]:
     heroes = await get_details()
     collection_name = "heroes"
     if hasattr(db, collection_name):

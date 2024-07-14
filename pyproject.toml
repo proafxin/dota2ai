@@ -46,3 +46,7 @@ exclude_dirs = [".venv", "venv", "env", ".tox", "docs", "tests"]
 
 [tool.ruff]
 line-length = 100
+
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"

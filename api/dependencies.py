@@ -14,7 +14,10 @@ from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 from rodi import Container
 
 client: AsyncIOMotorClient = AsyncIOMotorClient(
-    host=os.environ["MONGO_HOST"], port=int(os.environ["MONGO_PORT"])
+    host=os.environ["MONGO_HOST"],
+    port=int(os.environ["MONGO_PORT"]),
+    username=os.environ["MONGO_USER"],
+    password=os.environ["MONGO_PASSWORD"],
 )
 db: AsyncIOMotorDatabase = getattr(client, "dota2")
 
