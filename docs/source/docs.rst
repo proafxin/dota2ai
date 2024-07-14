@@ -1,13 +1,13 @@
-dota2ai package
-===============
+docs package
+============
 
 Submodules
 ----------
 
-dota2ai.about module
---------------------
+docs.binders module
+-------------------
 
-.. automodule:: dota2ai.about
+.. automodule:: docs.binders
    :members:
    :undoc-members:
    :show-inheritance:
@@ -15,7 +15,7 @@ dota2ai.about module
 Module contents
 ---------------
 
-.. automodule:: dota2ai
+.. automodule:: docs
    :members:
    :undoc-members:
    :show-inheritance:

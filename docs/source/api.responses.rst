@@ -1,21 +1,21 @@
-backend.db package
-==================
+api.responses package
+=====================
 
 Submodules
 ----------
 
-backend.db.connect module
+api.responses.base module
 -------------------------
 
-.. automodule:: backend.db.connect
+.. automodule:: api.responses.base
    :members:
    :undoc-members:
    :show-inheritance:
 
-backend.db.create module
-------------------------
+api.responses.heroes module
+---------------------------
 
-.. automodule:: backend.db.create
+.. automodule:: api.responses.heroes
    :members:
    :undoc-members:
    :show-inheritance:
@@ -23,7 +23,7 @@ backend.db.create module
 Module contents
 ---------------
 
-.. automodule:: backend.db
+.. automodule:: api.responses
    :members:
    :undoc-members:
    :show-inheritance:

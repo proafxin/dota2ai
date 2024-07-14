@@ -4,5 +4,7 @@ dota2ai
 .. toctree::
    :maxdepth: 4
 
-   backend
+   api
+   docs
    dota2ai
+   server

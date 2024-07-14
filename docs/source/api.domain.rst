@@ -1,13 +1,13 @@
-dota2ai package
-===============
+api.domain package
+==================
 
 Submodules
 ----------
 
-dota2ai.about module
---------------------
+api.domain.common module
+------------------------
 
-.. automodule:: dota2ai.about
+.. automodule:: api.domain.common
    :members:
    :undoc-members:
    :show-inheritance:
@@ -15,7 +15,7 @@ dota2ai.about module
 Module contents
 ---------------
 
-.. automodule:: dota2ai
+.. automodule:: api.domain
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,13 +1,13 @@
-dota2ai package
-===============
+api.routers package
+===================
 
 Submodules
 ----------
 
-dota2ai.about module
---------------------
+api.routers.heroes module
+-------------------------
 
-.. automodule:: dota2ai.about
+.. automodule:: api.routers.heroes
    :members:
    :undoc-members:
    :show-inheritance:
@@ -15,7 +15,7 @@ dota2ai.about module
 Module contents
 ---------------
 
-.. automodule:: dota2ai
+.. automodule:: api.routers
    :members:
    :undoc-members:
    :show-inheritance:
