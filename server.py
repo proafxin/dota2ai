@@ -4,12 +4,13 @@ from rodi import Container
 from api.auth import configure_authentication
 from api.dependencies import client, configure_dependencies
 from api.errors import configure_error_handlers
-from api.routers.heroes import populate_details
+from api.routers.heroes import all, populate_details
 from docs import configure_docs
 
 
 def configure_routes(app: Application) -> None:
     app.router.add_post("/populate/details", populate_details)
+    app.router.add_get("/heroes", all)
 
 
 def shut_down(app: Application) -> None:

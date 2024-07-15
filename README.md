@@ -1,4 +1,4 @@
-# Python Template
+# Dota 2 AI
 
 [![Build, test with Tox and deploy](https://github.com/proafxin/dota2ai/actions/workflows/test_release.yaml/badge.svg)](https://github.com/proafxin/dota2ai/actions/workflows/test_release.yaml)
 [![codecov](https://codecov.io/gh/proafxin/dota2ai/graph/badge.svg?token=PcI5eAJIRG)](https://codecov.io/gh/proafxin/dota2ai)
