@@ -1,5 +1,6 @@
 import asyncio
-from os.path import exists, join
+from os import makedirs
+from os.path import exists, join, splitext
 from typing import Any
 
 import aiofiles
@@ -16,18 +17,25 @@ async def get_json(url: str, session: ClientSession) -> list[dict[str, Any]]:
 
 
 async def get_image(url: str, session: ClientSession) -> str:
-    filename = url.split("/")[-1]
-    path = join(DATA_DIR, filename)
+    file = url.split("/")[-1]
+    filename, _ = splitext(file)
+
+    image_dir = join(DATA_DIR, filename)
+
+    if not exists(image_dir):
+        makedirs(image_dir)
+
+    path = join(image_dir, file)
 
     if exists(path=path):
-        return filename
+        return file
 
     async with session.get(url=url) as response:
-        file = await aiofiles.open(file=path, mode="wb")
-        await file.write(await response.read())
-        await file.close()
+        f = await aiofiles.open(file=path, mode="wb")
+        await f.write(await response.read())
+        await f.close()
 
-    return filename
+    return file
 
 
 async def get_images(urls: list[str], session: ClientSession) -> list[str]:
