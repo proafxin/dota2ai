@@ -13,9 +13,7 @@ from essentials.exceptions import (
 
 
 def configure_error_handlers(app: Application) -> None:
-    async def not_found_handler(
-        app: Application, request: Request, exception: Exception
-    ) -> Response:
+    async def not_found_handler(app: Application, request: Request, exception: Exception) -> Response:
         return text(str(exception) or "Not found", 404)
 
     async def not_implemented(*args: Any) -> Response:

@@ -31,8 +31,7 @@ def set_binders_docs(docs: OpenAPIHandler) -> None:
                 "continuation_id",
                 ParameterLocation.QUERY,
                 description=(
-                    "Optional, ID of the last item that was retrieved. "
-                    "If provided, enables faster pagination."
+                    "Optional, ID of the last item that was retrieved. " "If provided, enables faster pagination."
                 ),
                 schema=Schema(format=ValueFormat.INT64, default=None),
             ),
