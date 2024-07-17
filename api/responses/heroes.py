@@ -34,6 +34,7 @@ class Hero(Base):
     attack_type: AttackType
     roles: list[Role]
     legs: int
+    cleaned_name: str
 
 
 class HeroResponse(BaseResponse, Hero):

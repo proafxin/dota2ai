@@ -1,13 +1,22 @@
+import asyncio
 import os
 from typing import AsyncGenerator
 
+import pytest
 import pytest_asyncio
-from blacksheep import Application
+from blacksheep import Application, Request
 from blacksheep.testing import TestClient
 from motor.motor_asyncio import AsyncIOMotorClient
 from rodi import Container
 
 from server import app as main_api
+
+
+@pytest.fixture(scope="session")
+def event_loop(request: Request):  # type: ignore
+    loop = asyncio.get_event_loop_policy().new_event_loop()
+    yield loop
+    loop.close()
 
 
 @pytest_asyncio.fixture(scope="session")
