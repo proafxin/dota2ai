@@ -31,3 +31,15 @@ async def test_get_all(test_client: TestClient, api: Application) -> None:
     assert isinstance(data, list)
     for x in data:
         assert isinstance(x, dict)
+
+
+@pytest.mark.asyncio
+async def test_get_images(test_client: TestClient, api: Application) -> None:
+    url = "/heroes/images"
+    response = await test_client.get(path=url)
+
+    assert response.status == HTTPStatus.OK
+    data = await response.json()
+    assert isinstance(data, list)
+    for x in data:
+        assert isinstance(x, str)
