@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 from os.path import join
 
+import yaml
 from aiohttp import ClientSession
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
@@ -68,6 +69,16 @@ async def all_images(db: AsyncIOMotorDatabase) -> list[str]:
 
         with open(file=class_file, mode="w") as f:
             f.write("\n".join(classes))
+
+        data = {
+            "path": "../data/",
+            "train": "images/",
+            "val": "images/",
+            "test": "images/",
+            "names": {n_class: _class for n_class, _class in enumerate(classes)},
+        }
+        with open(file=join(DATA_DIR, "dota2.yaml"), mode="w") as dataset:
+            yaml.dump(data=data, stream=dataset)
 
         responses = await get_images(urls=urls, session=session)
 
