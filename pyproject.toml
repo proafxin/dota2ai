@@ -21,6 +21,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
 ]
+version = "0.1.0"
 
 
 [tool.hatch.version]
@@ -37,6 +38,10 @@ exclude = [".venv", ".env", "venv", "build", "docs", "dist"]
 
 [[tool.mypy.overrides]]
 module = "openapidocs.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "ultralytics.*"
 ignore_missing_imports = true
 
 

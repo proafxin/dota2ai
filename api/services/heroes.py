@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from os.path import join
 
 from aiohttp import ClientSession
 from motor.motor_asyncio import AsyncIOMotorDatabase
@@ -6,6 +7,7 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 from api.requests import get_images, get_json
 from api.responses.heroes import Hero, HeroResponse
 from api.services.name_mapping import HEROES
+from dota2ai.settings import DATA_DIR
 
 
 async def clean_name(name: str) -> str:
@@ -57,9 +59,15 @@ async def all_images(db: AsyncIOMotorDatabase) -> list[str]:
 
     async with ClientSession() as session:
         urls: list[str] = []
+        class_file = join(DATA_DIR, "classes.txt")
+        classes: list[str] = []
         for hero in await heroes:
             url = f"https://cdn.akamai.steamstatic.com/apps/dota2/images/dota_react/heroes/{hero.cleaned_name}.png"
             urls.append(url)
+            classes.append(hero.cleaned_name)
+
+        with open(file=class_file, mode="w") as f:
+            f.write("\n".join(classes))
 
         responses = await get_images(urls=urls, session=session)
 
