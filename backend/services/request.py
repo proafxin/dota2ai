@@ -8,13 +8,6 @@ from aiohttp import ClientSession
 from dota2ai.settings import DATA_DIR
 
 
-async def get_json(url: str, session: ClientSession) -> list[dict[str, Any]]:
-    async with session.get(url=url) as response:
-        data: list[dict[str, Any]] = await response.json()
-
-        return data
-
-
 async def get_image(url: str, session: ClientSession) -> str:
     filename = url.split("/")[-1]
     path = join(DATA_DIR, filename)
@@ -31,6 +24,24 @@ async def get_image(url: str, session: ClientSession) -> str:
 
 
 async def get_images(urls: list[str], session: ClientSession) -> list[str]:
-    responses = await asyncio.gather(*[get_image(url=url, session=session) for url in urls])
+    responses = await asyncio.gather(
+        *[get_image(url=url, session=session) for url in urls]
+    )
 
     return responses
+
+
+async def get(url: str, session: ClientSession) -> dict[str, Any]:
+    async with session.get(url=url) as response:
+        data = await response.json()
+
+    return data
+
+
+async def get_multiple(urls: list[str]) -> list[dict[str, Any]]:
+    async with ClientSession() as session:
+        responses = await asyncio.gather(
+            *[get(url=url, session=session) for url in urls]
+        )
+
+        return responses

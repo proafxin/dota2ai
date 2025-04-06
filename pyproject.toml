@@ -1,52 +1,40 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [project]
-dynamic = ["version"]
 name = "dota2ai"
-requires-python = ">=3.11"
-authors = [
-  {name = "Masum Billal", email = "billalmasum93@gmail.com"},
-]
-maintainers = [
-  {name = "Masum Billal", email = "billalmasum93@gmail.com"},
-]
-description = "AI tools for Dota 2."
+version = "0.1.0"
+description = "AI for Dota 2"
 readme = "README.md"
-license = {file = "LICENSE"}
-keywords = ["python", "ocr", "opencv", "yolo", "Dota 2", "pytorch"]
-classifiers = [
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
+requires-python = ">=3.13"
+dependencies = [
+    "aiofiles>=24.1.0",
+    "aiohttp>=3.11.16",
+    "polars>=1.26.0",
+    "torch>=2.6.0",
+    "types-aiofiles>=24.1.0.20250326",
 ]
 
+[dependency-groups]
+dev = [
+    "coverage>=7.8.0",
+    "pytest>=8.3.5",
+    "tox-uv>=1.25.0",
+]
+formatting = [
+    "bandit>=1.8.3",
+    "ruff>=0.11.4",
+]
 
-[tool.hatch.version]
-path = "dota2ai/about.py"
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
 
-[project.urls]
-Documentation = "https://dota2ai.readthedocs.io/en/latest/?badge=latest"
-Repository = "https://github.com/proafxin/dota2ai"
-"Bug Tracker" = "https://github.com/proafxin/dota2ai/issues"
-
-
-[tool.mypy]
-exclude = [".venv", ".env", "venv", "build", "docs", "dist"]
-
-[[tool.mypy.overrides]]
-module = "openapidocs.*"
-ignore_missing_imports = true
-
-
-[tool.bandit]
-exclude_dirs = [".venv", "venv", "env", ".tox", "docs", "tests"]
-
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu126", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+torchvision = [
+  { index = "pytorch-cu126", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
 
 [tool.ruff]
 line-length = 120
-
-
-[tool.pytest.ini_options]
-asyncio_mode = "auto"
